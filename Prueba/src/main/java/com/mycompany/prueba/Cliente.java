@@ -145,6 +145,7 @@ public class Cliente extends javax.swing.JFrame {
             String mgsout = "";
             mgsout = mensaje.getText().trim();
             dout.writeUTF(mgsout);
+            mensaje1.setText(null);
         }catch(Exception e){
             System.out.println("Error en el cliente enviar"+e);
         }
@@ -157,10 +158,12 @@ public class Cliente extends javax.swing.JFrame {
 
     private void conectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_conectarActionPerformed
         // TODO add your handling code here:
+        
         try{
             String conecmsj = "";
             conecmsj = clientesel.getText().trim();
             dout.writeUTF(conecmsj);
+            
         }catch(Exception e){
             System.out.println("Error conectar usuario" +e);
         }

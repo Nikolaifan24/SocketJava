@@ -4,6 +4,10 @@
  */
 package com.mycompany.figuras;
 
+import java.awt.Graphics;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
 /**
  *
  * @author nikol
@@ -13,8 +17,15 @@ public class Panel extends javax.swing.JFrame {
     /**
      * Creates new form Panel
      */
+    
+    private FigurasG fig;
+    
+       
     public Panel() {
         initComponents();
+        fig = new FigurasG();
+        
+        
     }
 
     /**
@@ -26,21 +37,195 @@ public class Panel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Thread = new javax.swing.JButton();
+        Thread2 = new javax.swing.JButton();
+        Thread3 = new javax.swing.JButton();
+        panel = new javax.swing.JPanel();
+        Boton = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        Thread.setText("Start Thread 1");
+        Thread.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                ThreadStateChanged(evt);
+            }
+        });
+        Thread.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ThreadMouseClicked(evt);
+            }
+        });
+        Thread.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ThreadActionPerformed(evt);
+            }
+        });
+
+        Thread2.setText("Start Threat 2");
+        Thread2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Thread2ActionPerformed(evt);
+            }
+        });
+
+        Thread3.setText("Start Threat 3");
+        Thread3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Thread3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelLayout = new javax.swing.GroupLayout(panel);
+        panel.setLayout(panelLayout);
+        panelLayout.setHorizontalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 268, Short.MAX_VALUE)
+        );
+        panelLayout.setVerticalGroup(
+            panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 240, Short.MAX_VALUE)
+        );
+
+        Boton.setText("Return");
+        Boton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Thread)
+                    .addComponent(Thread2)
+                    .addComponent(Thread3))
+                .addGap(18, 18, 18)
+                .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(Thread)
+                        .addGap(18, 18, 18)
+                        .addComponent(Thread2)
+                        .addGap(18, 18, 18)
+                        .addComponent(Thread3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(31, 31, 31)
+                        .addComponent(panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(Boton)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void ThreadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ThreadActionPerformed
+        // TODO add your handling code here:
+//        boolean figuraVisible = false;
+        Runnable dibujar = new Runnable(){
+            public void run(){
+                Graphics g = panel.getGraphics();  
+                if (g != null){
+                if (fig != null){
+                        int x = 0;
+                        int y = 0;
+                        int width = 10;
+                        int height = 150;
+                        fig.hacer_figura(g, "rectangulo", x, y, width, height);
+                   
+                    }
+                }
+                
+            }
+        };
+        
+        Thread dibujo = new Thread(dibujar);
+        dibujo.start();
+        
+//        super.paintComponents(g);
+
+        
+    }//GEN-LAST:event_ThreadActionPerformed
+
+    private void ThreadMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ThreadMouseClicked
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_ThreadMouseClicked
+
+    private void Thread2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Thread2ActionPerformed
+        // TODO add your handling code here:
+        Runnable dibujar = new Runnable(){
+            public void run(){
+                Graphics g = panel.getGraphics();  
+                if (g != null){
+                if (fig != null){
+                        int x = 150;
+                        int y = 100;
+                        int width = 100;
+                        int height = 100;
+                        fig.hacer_figura(g, "cuadrado", x, y, width, height);
+
+                    }
+                }
+                
+            }
+        };
+        
+        Thread dibujo = new Thread(dibujar);
+        dibujo.start();
+        
+    }//GEN-LAST:event_Thread2ActionPerformed
+
+    private void Thread3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Thread3ActionPerformed
+        // TODO add your handling code here:
+        
+        Runnable dibujar = new Runnable(){
+            public void run(){
+                Graphics g = panel.getGraphics();  
+                if (g != null){
+                if (fig != null){
+                        int x = 25;
+                        int y = 0;
+                        int width = 100;
+                        int height = 100;
+                        fig.hacer_figura(g, "circulo", x, y, width, height);
+
+                    }
+                }
+                
+            }
+        };
+        
+        Thread dibujo = new Thread(dibujar);
+        dibujo.start();
+    }//GEN-LAST:event_Thread3ActionPerformed
+
+    private void ThreadStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_ThreadStateChanged
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_ThreadStateChanged
+
+    private void BotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonActionPerformed
+        // TODO add your handling code here:
+        Instrucciones v = new Instrucciones();
+        v.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_BotonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +263,10 @@ public class Panel extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Boton;
+    private javax.swing.JButton Thread;
+    private javax.swing.JButton Thread2;
+    private javax.swing.JButton Thread3;
+    private javax.swing.JPanel panel;
     // End of variables declaration//GEN-END:variables
 }

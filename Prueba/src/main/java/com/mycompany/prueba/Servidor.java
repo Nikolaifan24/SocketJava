@@ -105,6 +105,7 @@ public class Servidor extends javax.swing.JFrame {
             String msgout = "";
             msgout = mensaje1.getText().trim();
             dout.writeUTF(msgout);
+            mensaje1.setText(null);
         }catch(Exception e){
             System.out.println("Hay un error Servidor Enviando" + e);
         }
